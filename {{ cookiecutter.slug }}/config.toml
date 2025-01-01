@@ -1,0 +1,10 @@
+[app]
+name = "{{ cookiecutter.slug }}"
+
+[db]
+user = ""
+password = ""
+host = ""
+name = ""
+port=5432
+metadata_schema = "metadata"

@@ -1,0 +1,7 @@
+{
+    "project_name": "Default Sophons ETL Package",
+    "slug": "{{ cookiecutter.project_name.lower().replace(' ', '_') }}",
+    "author": "mikevatd3",
+    "author_email": "mike@datadrivendetroit.org",
+    "description": "The default sophons ETL package for bringing in new datasets"
+}
