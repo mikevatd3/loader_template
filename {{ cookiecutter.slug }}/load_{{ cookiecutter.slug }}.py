@@ -67,7 +67,7 @@ def main(edition_date):
         logger.info(
             f"Validating {table_name} was successful. Recording metadata."
         )
-    except SchemaError | SchemaErrors as e:
+    except (SchemaError, SchemaErrors) as e:
         logger.error(f"Validating {table_name} failed.", e)
 
     with metadata_engine.connect() as db:
