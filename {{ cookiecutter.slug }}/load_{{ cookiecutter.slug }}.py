@@ -5,7 +5,7 @@ from pandera.typing import Series
 from pandera.errors import SchemaError, SchemaErrors
 import tomli
 
-from naics import setup_logging, db_engine, metadata_engine
+from {{ cookiecutter.slug }} import setup_logging, db_engine, metadata_engine
 from metadata_audit.capture import record_metadata
 from sqlalchemy.orm import sessionmaker
 
