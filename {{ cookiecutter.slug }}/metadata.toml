@@ -2,6 +2,8 @@
 # for datasets that should live together in their own schema.
 name = "{{ cookiecutter.slug }}"
 description = "{{ cookiecutter.description }}"
+schema = "{{ cookiecutter.schema }}"
+
 
 [tables.codes] # The 'codes' table
 # If you don't want to provide any particular field, you can just comment 

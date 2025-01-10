@@ -44,7 +44,11 @@ class TableSchema(pa.DataFrameModel):
 
 @click.command()
 @click.argument("edition_date")
-def main(edition_date):
+@click.option("-m", "--metadata_only", is_flag=True, help="Skip uploading dataset.")
+def main(edition_date, metadata_only):
+    if metadata_only:
+        logger.info("Metadata only was selected.")
+
     edition = metadata["tables"][table_name]["editions"][edition_date]
 
     result = (
@@ -87,13 +91,15 @@ def main(edition_date):
         db.commit()
         logger.info("successfully recorded metadata")
 
-    with db_engine.connect() as db:
-        logger.info("Metadata recorded, pushing data to db.")
+    if not metadata_only:
+        with db_engine.connect() as db:
+            logger.info("Metadata recorded, pushing data to db.")
 
-        validated.to_sql(  # type: ignore
-            table_name, db, index=False, schema="{{ cookiecutter.slug }}", if_exists="replace"
-        )
-
+            validated.to_sql(  # type: ignore
+                table_name, db, index=False, schema=metadata["schema"], if_exists="append"
+            )
+    else:
+        logger.info("Metadata only specified, so process complete.")
 
 if __name__ == "__main__":
     main()
