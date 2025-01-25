@@ -73,6 +73,7 @@ def main(edition_date, metadata_only):
         )
     except (SchemaError, SchemaErrors) as e:
         logger.error(f"Validating {table_name} failed.", e)
+        return -1 # Don't continue if you can't validate!
 
     with metadata_engine.connect() as db:
         logger.info("Connected to metadata schema.")
