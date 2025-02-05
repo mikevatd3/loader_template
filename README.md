@@ -1,4 +1,4 @@
-# How to setup and use the D3 Python ETL package template
+# How to setup and use this Python ETL package template
 
 ## Install cookiecutter and poetry in your *base Python 3 installation*
 
